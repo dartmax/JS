@@ -1,0 +1,8 @@
+function removeChar(str){
+return(str.slice(1,str.length-1));
+
+removeChar('eloquent');
+removeChar('country');
+removeChar('person');
+removeChar('place');
+};
