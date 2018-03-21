@@ -1,0 +1,10 @@
+function makeUpperCase(str) {
+return (str.toUpperCase());
+makeUpperCase("hello");
+}
+
+function greet(name){
+return('Hello, ' + name + ' how are you doing today?');
+greet("Ryan");
+greet("Shingles");
+}
