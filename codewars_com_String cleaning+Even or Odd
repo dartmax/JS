@@ -1,0 +1,9 @@
+function stringClean(s){
+var s = s.replace(/[0-9]/g, '');
+return s;
+}
+
+function even_or_odd(number) {
+var number = ((number & 1) == 0) ? "Even" : "Odd";
+return number;
+}
