@@ -12,5 +12,5 @@ greet: sayHi
 console.log(person.greet("Hi"));
 console.log(anotherPerson.greet.call(person, "Bonjour"));
 console.log(anotherPerson.greet.apply(person, ["Bonjour"]));
-var bound = sayHi.bind(anotherPerson);
+var bound = sayHi.bind(anotherPerson); // bind возвращает новую функцию свзанную с объектом
 console.log(bound("Hello there"));
