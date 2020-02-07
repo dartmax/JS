@@ -1,0 +1,16 @@
+var sayHi = function(greeting){
+return greeting + "! My name " + this.name;}
+
+var person = {
+name: "Jhon",
+greet: sayHi
+};
+var anotherPerson = {
+name: "Bob",
+greet: sayHi
+};
+console.log(person.greet("Hi"));
+console.log(anotherPerson.greet.call(person, "Bonjour"));
+console.log(anotherPerson.greet.apply(person, ["Bonjour"]));
+var bound = sayHi.bind(anotherPerson);
+console.log(bound("Hello there"));
