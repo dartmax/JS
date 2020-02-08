@@ -14,3 +14,23 @@ console.log(anotherPerson.greet.call(person, "Bonjour"));
 console.log(anotherPerson.greet.apply(person, ["Bonjour"]));
 var bound = sayHi.bind(anotherPerson); // bind возвращает новую функцию свзанную с объектом
 console.log(bound("Hello there"));
+
+
+_____________________________________________
+https://www.codewars.com/kata/57036f007fd72e3b77000023/train/javascript
+_____________________________________________
+
+class Solution{
+constructor(a, b){
+this.a = a;
+this.b = b;
+}
+get main() {
+    return `${this.a} ${this.b}`;
+  }
+  set main(hi) {
+    [this.a, this.b] = hi.split(' ');
+  }
+};
+let Sol = new Solution("Hello ", "World!");
+document.write( Sol.main );
