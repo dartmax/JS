@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://zimjs.org/cdn/1.2.4/createjs.js"></script>
+    <script src="https://zimjs.org/cdn/10.8.0/zim.js"></script>
+    <script>
+
+        var scaling = "full";
+        var width = null;
+        var height = null;
+        var color = "#ebcb35";
+        var frame = new zim.Frame(scaling, width, height, color);
+        frame.on("ready", function () {
+            zog("ready from ZIM Frame");
+
+            var stage = frame.stage;
+            var stageW = frame.width;
+            var stageH = frame.height;
+
+            var gm = new zim.GridManager();
+            // gm.add(new zim.Grid(stage)); // рисуем сетку
+            var guideManager= new zim.GuideManager();
+            guideManager.add(new zim.Guide(page));
+            guideManager.add(new zim.Guide(page, false));
+
+            var page = new zim.Container(500,500).center(stage);//добавляем нове свойство page по которому будут выравниватся остальные объекты
+            var rect = new zim.Rectangle(page.width, page.width, frame.orange).addTo(page); // рисуем квадрат 500х500 px посередине холста
+
+            gm.add(new zim.Grid(page));
+
+            frame.on("resize", resize);
+
+            function resize(e) {
+                stageW = frame.width;
+                stageH = frame.height;
+
+                page.scaleTo(stage, 95, 95).center(stage, false); // бокс стал привязан к гриду, и теперь одинаково по центру и с лева и справа. ключевое "both" дает возможность пропорционально колсту изменять размер объекта, но не пропорционально размеру ширины или высоты самого объекта
+                //rect.scaleTo(stage, 80, 80, "both").pos(stageW*.1, stageH*.1);//привязывает объект к растягиванию страницы и отодвигает его на 10% по Х и У и он не деформируется как сетка.
+
+                gm.resize();// растягивает канвас на 100% по всему холсту
+                guideManager.resize(); // перерисовывает линии  по размеру холста
+                stage.update();
+
+            }
+        });
+    </script>
+</head>
+<style>
+    body {margin: 0px; padding: 0px; background-color: #000;}
+</style>
+<body>
+
+
+
+</body>
+</html>
